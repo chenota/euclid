@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <string>
+#include "algorithms.hpp"
 
 int main(int argc, char *argv[]) {
     // Argument parsing
