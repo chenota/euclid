@@ -7,8 +7,9 @@ int main(int argc, char *argv[]) {
     // Argument parsing
     enum {BASIC, EXTENDED} algorithm = BASIC;
     enum {REGULAR, VERBOSE} mode = REGULAR;
+    enum {TABS, LATEX} table_style = TABS;
     int c;
-    while((c = getopt(argc, argv, "ev")) != -1) {
+    while((c = getopt(argc, argv, "evl")) != -1) {
         switch(c) {
             // -e switches mode to extended
             case 'e':
@@ -17,6 +18,10 @@ int main(int argc, char *argv[]) {
             // -v switches output mode to verbose
             case 'v':
                 mode = VERBOSE;
+                break;
+            // -l switches table style to latex
+            case 'l':
+                table_style = LATEX;
                 break;
             // Unknown option error
             default:
@@ -37,9 +42,9 @@ int main(int argc, char *argv[]) {
     // Run specified algorithm
     int result, x, xp, y, yp;
     if(algorithm == BASIC) {
-        result = euclid_basic(a, b, 0, mode == VERBOSE);
+        result = euclid_basic(a, b, 0, mode == VERBOSE, table_style == LATEX);
     } else {
-        result = euclid_extended(b, a, &x, &xp, &y, &yp, 0, mode == VERBOSE);
+        result = euclid_extended(b, a, &x, &xp, &y, &yp, 0, mode == VERBOSE, table_style == LATEX);
     }
     // Print result
     if(mode == VERBOSE) {
