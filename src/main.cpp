@@ -56,7 +56,14 @@ int main(int argc, char *argv[]) {
             std::cout << std::endl;
         }
     } else {
-        std::cout << result << std::endl;
+        if(algorithm == EXTENDED) {
+            std::cout << "x\t" << x << std::endl;
+            std::cout << "y\t" << y << std::endl;
+            std::cout << "gcd\t" << result << std::endl;
+        }
+        else {
+            std::cout << result << std::endl;
+        }
     }
     // Exit success
     return 0;
